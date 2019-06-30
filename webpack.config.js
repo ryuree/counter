@@ -14,7 +14,7 @@ module.exports = {
     extensions: [".js", ".jsx"]
   },
   output: {
-    publicPath: "/",
+    publicPath: "./",
     path: path.join(__dirname, "dist"),
     filename: "js/[name].bundle.min.js",
     chunkFilename: "js/[name].bundle.js"
