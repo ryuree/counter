@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import './App.css';
-import {Appbox,Title,Section,CounterNumWrap,Button} from './styled'
+import {Appbox,Title,Section,CounterNumWrap} from './styled'
+
+import {Buttons} from "./components";
 
 class App extends React.Component {
   state = {
@@ -31,8 +33,8 @@ class App extends React.Component {
           <CounterNumWrap>
             {/* <h1>{isClick ? count +'클릭함': count +'클릭안함'}</h1> */}
             <h1>{count}</h1>
-            <Button type="button" id="decrement" color={false} onClick={()=>this.handleDecreNum()}>-</Button>
-            <Button type="button" id="increment" color={true} onClick={()=>this.handleIncreNum()}>+</Button>
+            <Buttons id="decrement" onHandle={()=>this.handleDecreNum()}>-</Buttons>
+            <Buttons id="increment" color onHandle={()=>this.handleIncreNum()}>+</Buttons>
           </CounterNumWrap>
         </Section>
       </Appbox>

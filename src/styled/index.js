@@ -26,6 +26,8 @@ const Button = styled.button`
   color:#fff;
   font-size:40px;
   margin-right:${(props) => (props.color ? '0' : '5px')};
+  outline:none;
+  cursor:pointer
 `;
 
 export {Appbox,Title,Section,CounterNumWrap,Button}
