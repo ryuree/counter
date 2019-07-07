@@ -1,45 +1,41 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import styled from 'styled-components';
 import './App.css';
 import {Appbox,Title,Section,CounterNumWrap} from './styled'
 
 import {Buttons} from "./components";
 
-class App extends React.Component {
-  state = {
-    count :0
-  }
 
-  handleIncreNum(){
-    this.setState({
-      count : this.state.count + 1,
-    });
-  }
+const App =function() {
+  const INIT_COUNT = 0;
+  const DIFF_COUNT = 1;
+  const [count,setCount] = useState(INIT_COUNT);
+  const title = 'COUNTER APP'
+ 
+  const handleIncreNum = ()=>{setCount(count + DIFF_COUNT)};
+  const handleDecreNum = ()=>{setCount(count - DIFF_COUNT)};
+  const handleReset = () =>{setCount(INIT_COUNT)};
 
-  handleDecreNum(){
-    this.setState({
-      count : this.state.count - 1,
-    });
-  }
+  useEffect (
+    ()=>{
+      console.log('=== componentDidMount ===');
+      return ()=>{console.log('=== before Rerender Component ===')}
+    }
+  )
 
-  render() {
-    const {count} = this.state;
-    const isClick = count >= 1
-
-    return (
-      <Appbox>
-        <Title>COUNTER APP</Title>
-        <Section>
-          <CounterNumWrap>
-            {/* <h1>{isClick ? count +'클릭함': count +'클릭안함'}</h1> */}
-            <h1>{count}</h1>
-            <Buttons id="decrement" onHandle={()=>this.handleDecreNum()}>-</Buttons>
-            <Buttons id="increment" color onHandle={()=>this.handleIncreNum()}>+</Buttons>
-          </CounterNumWrap>
-        </Section>
-      </Appbox>
-    );
-  };
+  return (
+    <Appbox>
+      <Title>{title}</Title>
+      <Section>
+        <CounterNumWrap>
+          <h1>{count}</h1>
+          <Buttons id="increment" color onHandle={handleIncreNum}>+</Buttons>
+          <Buttons id="decrement" onHandle={handleDecreNum}>-</Buttons>
+          <Buttons id="reset" onHandle={handleReset}>re</Buttons>
+        </CounterNumWrap>
+      </Section>
+    </Appbox>
+  );
 }
 
 export default App;
